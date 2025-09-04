@@ -1,0 +1,118 @@
+%%%%%%%%%%%%% FORMATTING %%%%%%%%%%%%%
+
+% Spacing
+\usepackage{setspace}
+\singlespacing
+
+
+% Margins, etc
+\usepackage{geometry} 
+
+% Saving title space
+\geometry{a4paper, margin=1in}
+\usepackage{titling}
+\setlength{\droptitle}{0em}
+
+% Custom footer
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Caleb Hill}
+\rhead{UNH Mathematics}
+\lfoot{  }
+\rfoot{  }
+
+% Bibliography
+\usepackage[
+backend=biber,
+style=numeric,
+% style=authoryear
+% style=bwl-FU
+]{biblatex}
+\addbibresource{refs.bib}
+
+
+
+%%%%%%%%%%%%%%%%% MARKUPS %%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[color=cyan]{todonotes}
+\usepackage{color}
+\newcommand{\red}[1]{{\color{red}{#1}}}
+\newcommand{\blue}[1]{{\color{blue}{#1}}}
+\newcommand{\cainsays}[1]{\blue{Cain says: #1}}
+
+\usepackage{comment}
+
+
+
+%%%%%%%%%%%%%%%%%% MATH %%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\onto}{\twoheadrightarrow}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\unit}{\mathbbm{1}} % depends on package bbm
+
+\newcommand{\CC}{\mathcal{C}}
+\newcommand{\DD}{\mathcal{D}}
+\newcommand{\EE}{\mathcal{E}}
+\newcommand{\FF}{\mathcal{F}}
+\newcommand{\GG}{\mathcal{G}}
+\newcommand{\MM}{\mathcal{M}}
+\newcommand{\PP}{\mathcal{P}}
+\newcommand{\Neg}{\mathcal{N}}
+
+\newcommand{\tr}{tr}
+\newcommand{\id}{id}
+\newcommand{\ldag}{\langle}
+\newcommand{\rdag}{\rangle^\dagger}
+\newcommand{\ol}{\overline}
+
+\newcommand{\dd}{\mathfrak{d}}
+\newcommand{\ee}{\mathfrak{e}}
+\renewcommand{\gg}{\mathfrak{g}}
+\newcommand{\hh}{\mathfrak{h}}
+\renewcommand{\sl}{\mathfrak{sl}}
+\newcommand{\cat}[1]{\ol{\Rep(U_{#1}(\gg_2))}}
+
+\DeclareMathOperator{\ob}{ob}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\Rep}{Rep}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Alg}{Alg}
+\DeclareMathOperator{\GPA}{GPA}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Vecc}{Vec}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\Kar}{Kar}
+\DeclareMathOperator{\ev}{ev}
+\DeclareMathOperator{\coev}{coev}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\Ab}{Ab}
+
+
+\renewcommand{\phi}{\varphi}
+\let\oldepsilon\epsilon\let\epsilon\varepsilon\let\smallepsilon\oldepsilon %this makes \epsilon produce the curly epsilon, and \smallepsilon the smaller epsilon
+
+\newcommand{\blank}{\rule{0.2cm}{0.15mm}}
+
+
+\newcommand{\codebasename}{\texttt{OTimes}}
+
+
+%%%%%%%%%%%%%%%%%% THEOREMS %%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{plain}
+    \newtheorem{definition}{Definition}
+    \newtheorem{example}{Example}
+    \newtheorem{proposition}{Proposition}
+    \newtheorem{theorem}{Theorem}
+    \newtheorem{lemma}{Lemma}
+    \newtheorem{corollary}{Corollary}
+    \newtheorem{conjecture}{Conjecture}
+    \newtheorem{remark}{Remark}
+
+
+
+% skein diagrams
+\newcommand{\skein}[2]{\raisebox{-.4\height}{ \includegraphics[scale = #2]{figs/#1.png}}}
