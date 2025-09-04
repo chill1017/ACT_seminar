@@ -1,0 +1,134 @@
+\section*{9/3/2025}
+
+\subsection*{Why?}
+Why should you care about studying the coming content and applying it to your field?
+
+Physicists:
+\begin{itemize}
+    \item The particles in the standard model {\it are} irreducible representations. 
+    So rep theory is crucial to you.
+    \item Monoidal categories give a good framework for understanding QM.
+\end{itemize}
+Computer scientists:
+\begin{itemize}
+    \item It gives a framework for the Curry-Howard correspondence (proofs are programs).
+\end{itemize}
+Me:
+\begin{itemize}
+    \item Began as a study of ``analogies'' and turned into a study of nifty algebraic gadgets.
+    \item It's written in a {\it wild} language, and learning languages is fun.
+\end{itemize}
+
+
+\subsection*{Plan}
+The {\bf first goal} is to define monoidal categories with some context. 
+The {\bf second goal} is to describe a ``skeletal'' category defined by diagrammatics.
+To accomplish the first goal, we will study things including:
+\begin{itemize}
+    \item Algebraic objects (groups, vector spaces, ...) and maps between them 
+    \item Subobjects, images, combining objects ($\times$, $\otimes$, $\oplus$, ...) 
+    \item Categories ($Grp$, $Set$, $PoSet$, $\N$, $\Vecc$, ...)
+\end{itemize}
+I'd like to have as little fat on this as necessary.
+That is, not get sidetracked studying, for instance, too much of the internal structure of these objects.
+I want to give many examples and try to build intuition.
+For the second goal we'll study things including:
+\begin{itemize}
+    \item Representations and maps ($T(gv) = gT(v)$)
+    \item $\Rep(D_3)$ in detail
+\end{itemize}
+Up to this point I have a strong vision of where we're going. 
+After this we can go where the interest steers us.
+
+This plan is incomplete and non-exhaustive.
+
+
+
+
+\subsection*{Groups}
+This is the best onramp to categories I know of, so bear with me through some basics.
+\begin{definition}
+    A {\bf group} is a triple \[ (G,\mu,e)\] where $G$ is a set, 
+    $\mu:G\times G\to G$ is a function, and $e\in G$, such that 
+    \begin{equation*}\tag{Associativity}
+        \forall a,b,c\in G, \quad \mu(\mu(a,b),c) = \mu(a,\mu(b,c))
+    \end{equation*}\label{axiom:group-assoc}
+    \begin{equation*}\tag{Identity}
+        \forall a\in G, \quad \mu(a,e) = \mu(e,a) = a
+    \end{equation*}\label{axiom:group-id}
+    \begin{equation*}\tag{Inverse}
+        \forall a\in G, \exists b\in G, \quad\text{such that}\quad \mu(a,b)=\mu(b,a)=e
+    \end{equation*}\label{axiom:group-inv}
+    We often call the element $b$ from \ref{axiom:group-inv} by $a^{-1}$.
+    We also often use the following shorthands:
+    \begin{itemize}
+        \item $\mu(a,b) = a\cdot b = a\star b = ab$
+        \item $\underbrace{a\cdot a\cdots a}_{\text{$n$ copies}} = a^n$
+    \end{itemize}
+\end{definition}
+
+\begin{exercise}
+    Translate the three axioms above into the $ab$ notation.
+\end{exercise}
+
+\begin{exercise}
+    Prove the identity element in a group is unique. 
+    That is, if $e$ and $e'$ both satisfy Axiom~\ref{axiom:group-id},
+    show that $e'=e$.
+\end{exercise}
+
+Now some examples. 
+As an excercise, prove that each of the following is a group. 
+The notation $\coloneq$ reads as ``is defined to be.''
+
+\begin{example}[General linear group]
+    $(G,\mu,e)$, where
+    \begin{itemize}
+        \item $G = \GL_2(\C) \coloneq \{ \text{invertible $2\times 2$ matrices with entries in $\C$}\}$
+        \item $\mu(A,B) \coloneq AB$
+        \item $e=I_2 = \begin{bmatrix} 1&0\\0&1\\ \end{bmatrix}$
+    \end{itemize}
+\end{example}
+
+\begin{example}[General linear group]
+    $(G,\mu,e)$, where
+    \begin{itemize}
+        \item $G = \GL_n(\C) \coloneq \{ \text{invertible $n\times n$ matrices with entries in $\C$}\}$
+        \item $\mu(A,B) \coloneq AB$
+        \item $e = I_n$ (the $n\times n$ identity matrix)
+    \end{itemize}
+\end{example}
+
+\begin{example}[Integers]
+    $(G,\mu,e)$, where
+    \begin{itemize}
+        \item $G = \Z$
+        \item $\mu(a,b) \coloneq a+b$
+        \item $e = 0$
+    \end{itemize}
+\end{example}
+
+\begin{example}[\red{Not a group! Why?}]
+    $(G,\mu,e)$, where
+    \begin{itemize}
+        \item $G = \Z$
+        \item $\mu(a,b) \coloneq a\times b$
+        \item $e = 1$
+    \end{itemize}
+\end{example}
+
+\begin{example}[Braid group]
+    $(G,\mu,e)$, where
+    \begin{itemize}
+        \item $G = \text{$n$-strand braid diagrams (up to isotopy/wiggling)}$
+        \item $\mu = \text{vertical concatenation}$
+        \item $e = \text{$n$ unbraided strands}$
+    \end{itemize}
+\end{example}
+
+\subsection*{Things that came up}
+\begin{itemize}
+    \item Generators and relations presentations
+    \item Free group/group of words
+    \item Symmetric group/permutation groups
+\end{itemize}

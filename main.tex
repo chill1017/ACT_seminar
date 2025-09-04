@@ -21,68 +21,11 @@
 \maketitle
 
 
-\section*{9/3/2025}
+\include{lec_1}
 
-\subsection*{Why?}
-Why should you care about studying the coming content and applying it to your field?
-
-Physicists:
-\begin{itemize}
-    \item The particles in the standard model {\it are} irreducible representations. 
-    So rep theory is crucial to you.
-    \item Monoidal categories give a good framework for understanding QM.
-\end{itemize}
-Computer scientists:
-\begin{itemize}
-    \item It gives a framework for the Curry-Howard correspondence (proofs are programs).
-\end{itemize}
-Me:
-\begin{itemize}
-    \item Began as a study of ``analogies'' and turned into a study of nifty algebraic gadgets.
-    \item It's written in a {\it wild} language, and learning languages is fun.
-\end{itemize}
+\include{lec_2}
 
 
-\subsection*{Plan}
-The {\bf first goal} is to define monoidal categories with some context. 
-The {\bf second goal} is to describe a ``skeletal'' category defined by diagrammatics.
-To accomplish the first goal, we will study things including:
-\begin{itemize}
-    \item Algebraic objects (groups, vector spaces, ...) and maps between them 
-    \item Subobjects, images, combining objects ($\times$, $\otimes$, $\oplus$, ...) 
-    \item Categories ($Grp$, $Set$, $PoSet$, $\N$, $\Vecc$, ...)
-\end{itemize}
-I'd like to have as little fat on this as necessary.
-That is, not get sidetracked studying, for instance, too much of the internal structure of these objects.
-I want to give many examples and try to build intuition.
-For the second goal we'll study things including:
-\begin{itemize}
-    \item Representations and maps ($T(gv) = gT(v)$)
-    \item $\Rep(D_3)$ in detail
-\end{itemize}
-Up to this point I have a strong vision of where we're going. 
-After this we can go where the interest steers us.
-
-This plan is incomplete and non-exhaustive.
-
-
-
-
-\subsection*{Groups}
-This is the best onramp to categories I know of, so bear with me through some basics.
-\begin{definition}
-    A {\bf group} is a triple \[ (G,\mu,e)\] where $G$ is a set, 
-    $\mu:G\times G\to G$ is a function, and $e\in G$, such that 
-    \begin{equation*}\tag{Associativity}
-        \forall a,b,c\in G, \quad \mu(\mu(a,b),c) = \mu(a,\mu(b,c))
-    \end{equation*}
-    \begin{equation*}\tag{Identity}
-        \forall a\in G, \quad \mu(a,e) = \mu(e,a) = a
-    \end{equation*}
-    \begin{equation*}\tag{Inverse}
-        \forall a\in G, \exists b\in G, \quad\text{such that}\quad \mu(a,b)=\mu(b,a)=e
-    \end{equation*}
-\end{definition}
 
 
 \end{document}
