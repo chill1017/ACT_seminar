@@ -1,7 +1,25 @@
 \section{9/10/2025}
-\red{UNSTABLE}
 
 \subsection{More groups}
+Recall that, loosely, a group is a set endowed with a binary operation (multiplication), 
+with some associativity, identity, and inversion constraints.
+Henceforth we will refer to a group $(G,\mu,e)$ almost exclusively as $G$.
+Usually, $\mu$ and $e$ will be understood from context.
+For some of the following examples we might also write 
+$\mu_G$ to refer specifically to multiplication in $G$.
+
+
+
+
+\begin{example}[Nonzero field elements]
+    The set $\C^\times = \C-\{0\}$ is a group under multiplication.
+    Associativity is known.
+    Its identity element is $1\in\C$.
+    This is true for any field, i.e. $\R^\times$, $\Q^\times$, and $\FF_{p^n}^\times$
+    are all groups.
+\end{example}
+
+
 
 \begin{example}[Symmetric groups]
     Let $X$ be a set. Then $(G,\mu,e)$ is a group, where
@@ -12,25 +30,205 @@
     \end{itemize}
 \end{example}
 
+\begin{example}
+    If $X=\{1,\dots,n\}$, then we denote the group $S_X$ by $S_n$.
+    If $\sigma\in S_n$ then we often denote $\sigma$ as 
+    \[
+        \sigma = \begin{pmatrix}
+            1 & 2 & \cdots & n \\
+            \sigma(1) & \sigma(2) & \cdots & \sigma(n)
+        \end{pmatrix}
+    \]
+\end{example}
 
-\subsection{Subgroups}
-There is rich literature about the structure of subgroups of a group.
-We won't get into it more than necessary.
-\begin{definition}
-    Let $G$ and $H$ be two groups...
-\end{definition}
+
+
+
+\begin{example}[Dihedral group]
+    Let $G$ consist of the following six matrices:
+    % \left\{ \begin{align*}
+    %     G & =   
+    %         \begin{bmatrix}
+    %             1 & 0\\ 
+    %             0 & 1
+    %         \end{bmatrix}, & \begin{bmatrix}
+    %             \cos\frac{2\pi}{3} & -\sin\frac{2\pi}{3}\\ 
+    %             \sin\frac{2\pi}{3} & \cos\frac{2\pi}{3}
+    %         \end{bmatrix}, & \begin{bmatrix}
+    %             \cos\frac{4\pi}{3} & -\sin\frac{4\pi}{3}\\ 
+    %             \sin\frac{4\pi}{3} & \cos\frac{4\pi}{3}
+    %         \end{bmatrix},\\
+    %         & \begin{bmatrix}
+    %             1 & 0\\ 
+    %             0 & -1
+    %         \end{bmatrix}, & \begin{bmatrix}
+    %             \cos\frac{2\pi}{3} & \sin\frac{2\pi}{3}\\ 
+    %             \sin\frac{2\pi}{3} & -\cos\frac{2\pi}{3}
+    %         \end{bmatrix}, & \begin{bmatrix} 
+    %             \cos\frac{4\pi}{3} & \sin\frac{4\pi}{3}\\ 
+    %             \sin\frac{4\pi}{3} & -\cos\frac{4\pi}{3}
+    %         \end{bmatrix}
+    %     \end{align*}  
+    % \right\}
+\end{example}
+
+These matrices permute the points
+\[
+    \left\{ (1,0), 
+    ( -\frac{1}{2},\frac{\sqrt{3}}{2} ), 
+    ( -\frac{1}{2},-\frac{\sqrt{3}}{2} ) \right\}
+\]
+So we can see that it's ``the same as'' a certain permutation group.
+There are really 3 things at play in this last example:
+\begin{itemize}
+    \item Dihedral groups: 3 wasn't special. 
+    We could divide by any positive $n$ and get a group of $2n$ matrices.
+    \item Generators and relations: We could equally express this group as
+    \[ \langle r,s \mid r^3=e, s^2=e, rs=sr^2 \rangle.\]
+    In fact, that's usually how dihedral groups are presented.
+    \item Isomorphism: That group of matrices ``is'' a permutation group.
+\end{itemize}
+
+
+
 
 
 \subsection{Homomorphisms}
+We'll start by definine how two groups can be similar, or the same.
+\begin{definition}
+    Let $G$ and $H$ be two groups.
+    Let $f:G\to H$ be a function.
+    \begin{itemize}
+        \item We call $f$ a {\bf homomorphism} if 
+            \[ \forall a,b\in G, f(ab)=f(a)f(b)\]
+        \item We call $f$ an {\bf isomorphism} if it is a bijective homomorphism
+        \item If $f$ is a homomorphism, the {\bf kernel} of $f$ is the set
+            \[ \ker(f)\coloneq \{x\in G\mid f(x)=e_H\}\]
+        \item If $f$ is a homomorphism, the {\bf image} of $f$ is the set
+            \[ f(G) \coloneq \{f(X) \mid x\in G\} \subseteq H\]
+    \end{itemize}
+\end{definition}
 
-\begin{example}[$\det$]
-    
+Here are many examples. 
+It would be useful to prove those you don't see immediately.
+Well, it would probably be good to prove all of them...
+
+\begin{example}[Modular arithmetic]
+    $f: \Z \to \Z_n$, given by $f(x) \coloneq x\pmod n$
 \end{example}
 
-
-\begin{example}[$n \mapsto kn$]
-    
+\begin{example}[Multiplication]
+    $f: \Z \to \Z$, given by $f(x) \coloneq 4x$.
+    What is special about 4 here? Anything?
 \end{example}
 
+\begin{example}[Trivial]
+    Let $G$ and $H$ be any two groups.
+    Define $f: G \to H$ by $f(x) = e$.
+\end{example}
+
+\begin{example}[Identity]
+    Let $G$ be any group.
+    Define $f:G\to G$ by $f(x) \coloneq x$.
+\end{example}
+
+\begin{example}[Symmetric group inclusion]
+    Define $f:S_n \to S_{n+1}$ by declaring 
+    \[
+        f(\sigma) \coloneq \begin{pmatrix}
+            1 & 2 & \cdots & n & n+1 \\
+            \sigma(1) & \sigma(2) & \cdots & \sigma(n) & n+1 \\
+        \end{pmatrix}
+    \]
+    In particular, since this homomorphism is injective, this means we can think of $S_n$ as
+    ``sitting inside of'' $S_{n+1}$.
+    This actually holds more generally.
+    If a homomorphism $f:G\to H$ is injective, then there is an isomorphic copy of $G$ inside of $H$,
+    in the form of the image $f(G)$.
+    We'll define this more precisely in the next subsection.
+\end{example}
+
+\begin{example}[Linear maps]
+    Let $V$ and $W$ be vector spaces over $\C$.
+    The definition of vector spaces says that $(V,+)$ and $(W,+)$ are, in particular, abelian groups.
+    Let $T:V\to W$ be a linear map.
+    The condition
+    \[
+        T(x+y)=T(x) + T(y)
+    \]
+    implies that $T$ is a homomorphism of (abelian) groups.
+\end{example}
+
+\begin{example}[All linear maps]
+    $f: \Z \to \Z_n$, given by $f(x) \coloneq x\pmod n$
+\end{example}
+
+Here's a fact that we'll have uses for.
+\begin{exercise}
+    Let $f:G\to H$ be a homomorphim of groups.
+    For every $a\in G$, the inverse of $f(a)$ is $f(a^{-1})$.
+    In equation form, that's
+    \[ [f(a)]^{-1} = f(a^{-1}).\]
+\end{exercise}
 
 
+
+
+
+
+
+
+\subsection{Subgroups}
+As we saw above, $S_n$ ``sits inside of'' $S_{n+1}$.
+Here's how we say that precisely.
+
+\begin{definition}
+    Let $G$ be a group.
+    A nonempty subset $A\subseteq G$ is called a subgroup of $G$ if 
+    \begin{equation*}\tag{Closure}
+        \forall a,b\in A, \quad ab\in A
+    \end{equation*}
+
+    \begin{equation*}\tag{Inversion}
+        \forall a\in A, \quad a^{-1}\in A
+    \end{equation*}
+\end{definition}
+
+The first consequence of this definition is that if $A$ is a subgroup of $G$, then $e\in A$.
+Why? Well, take any element $a\in A$.
+Its inverse, $a^{-1}$ also is in $A$ by definition.
+Their product also must be in $A$.
+But their product is $e$.
+
+Here's a fact that will be of use.
+\begin{proposition}
+    Let $f:G\to H$ be a homomorphism.
+    Then
+    \begin{enumerate}
+        \item The kernel $\ker(f)$ is a subgroup of $G$.
+        \item The image $f(G)$ is a subgroup of $H$.
+    \end{enumerate}
+\end{proposition}
+
+Let's see some examples of subgroups in action.
+
+\begin{example}[Dihedral groups]
+    Let $n\geq1$ be a positive integer.
+    The set of $2n$ matrices of the forms
+    \[
+        \begin{bmatrix}
+            \cos2\pi\frac{k}{3} & -\sin2\pi\frac{k}{3}\\ 
+            \sin2\pi\frac{k}{3} & \cos2\pi\frac{k}{3}
+        \end{bmatrix} \quad \text{and} \quad
+        \begin{bmatrix}
+            \cos2\pi\frac{k}{3} & \sin2\pi\frac{k}{3}\\ 
+            \sin2\pi\frac{k}{3} & -\cos2\pi\frac{k}{3}
+        \end{bmatrix}
+    \]
+    for $k=0,1,\dots,n-1$ is a subgroup of $\GL_2(\C)$.
+\end{example}
+
+\begin{example}[Special linear group]
+    The set $SL_N(\C) \coloneq \{M \in \GL_N(\C) \mid \det(M)=1 \}$ 
+    is a subgroup of the general linear gorup $\GL_N(\C)$.
+\end{example}
