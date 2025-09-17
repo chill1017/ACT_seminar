@@ -1,12 +1,63 @@
 \section{9/17/2025}
 \red{UNSTABLE}
 
-I'd like to define a representaiton today, since we have all the requisite knowledge.
+I'd like to define a representaiton today, since we have all the prerequisite knowledge.
 The crux of the problem is this: group multiplication is hard.
 It's generally undecidable whether a given group element is even the identity.
 But if we can translate a group's multiplication into something more concrete (like matrices!),
 then we can learn a lot more about the group.
 
 We'll begin by recalling that a homomorphism between groups $G$ and $H$ 
-is a function $f:G\to H$ satisfying \[ f(ab) = f(a)f(b). \]
+is a function $f:G\to H$ satisfying \[ f(\underbrace{ab}_{\in G}) = \underbrace{f(a)f(b)}_{\in H}. \]
+It's important to remember which group the multiplication is happening in.
 
+There's a cool way to visualize this property that I'll draw on the board.
+I won't include it here becasue it's time-consuming to create\dots
+
+\subsection{Representations}
+Groups are meant to {\it act} on things, that is, to encode structure-preserving permutations.
+We've seen examples of this already:
+\begin{itemize}
+    \item Permutation groups: all permutations of an abstract set $X$. The structure being preserved here is cardinality.
+    \item Matrix groups: an invertible (bijective!) matrix is a permutation of $\C^n$.
+\end{itemize}
+
+A representation of a group is a sort of middle ground between these two.
+That is, it translates some (maybe not all) of the structure of a group into a matrix group, which permutes a vector space.
+
+\begin{definition}
+    Let $G$ be a group.
+    A (linear) {\bf representation} of $G$ is a homomorphism $\rho:G \to \GL_n(\C)$.
+\end{definition}
+
+\begin{remark}
+    Soemtimes we will write $\rho(g)$ as $\rho_g$ and $[\rho(g)](v)$ as any one of $\rho_g v$, $g.v$, or even just $gv$.
+\end{remark}
+
+Every group has at least one representation.
+
+\begin{example}
+    Let $G$ be any group.
+    Define $\rho:G\to \GL_1(\C)$ by $\rho(g) \coloneq [1]$ for every $g\in G$.
+    Then $\rho$ defines a representation, since it's a homomorphism:
+    \begin{align*}
+        \rho(gh) & = [1] \\
+        & = [1][1] \\
+        & \rho(g) \rho(h)
+    \end{align*}
+    A similar construction gives a representation of $G$ on $\GL_n(\C)$ by sending $g\mapsto I_n$.
+\end{example}
+
+Here's an example that translates modular arithmetic into matrix multiplication.
+
+\begin{example}
+    Let $G = \Z_4 = \{ 0,1,2,3 \}$ with addition modulo 4 as the operation.
+    Define $\rho:G\to \GL_1(\C)$ by $\rho(k) \coloneq [e^{2\pi i \frac{k}{4}}]$.
+    Then $\rho$ defines a representation, since it's a homomorphism:
+    \begin{align*}
+        \rho(j+k) & = [ e^{2\pi i \frac{j+k}{4}} ] \\
+        & = [ e^{2\pi i \frac{j}{4}} e^{2\pi i \frac{k}{4}} ] \\
+        & = [ e^{2\pi i \frac{j}{4}} ][ e^{2\pi i \frac{k}{4}} ] \\
+        & \rho(j) \rho(k)
+    \end{align*}
+\end{example}
