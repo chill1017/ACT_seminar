@@ -1,0 +1,65 @@
+\section{9/24/2025}
+\red{UNSTABLE}
+
+
+\subsection{Geometric example}
+These examples are both one-dimensional, so they don't really show the true flavor of representation theory. 
+Here's an example that is more complicated, which we'll linger on for a while.
+It's similar to the matrix group example, up to a change of basis.
+
+Let $D_3$ be the group with the following six elements:
+\[
+    \{ e, r, r^2, s, sr, sr^2 \}
+\]
+where we can freely multiply any elements using the reduction rules
+\[
+    r^3 = e, \quad s^2 = e, \quad rs = sr^2.
+\]
+We could alternatively phrase this by saying $D_3 = \langle r,s \mid r^3 = e, s^2 = e, rs = sr^2 \rangle$.
+We'll define a representation $\rho: D_3 \to \GL_2(\C)$ by declaring
+\[
+    \rho(s) \coloneq \begin{bmatrix}
+        0 & 1 \\
+        1 & 0 \\    
+    \end{bmatrix}
+    \quad \text{and} \quad
+    \rho(r) \coloneq \begin{bmatrix}
+        e^{2\pi i/3} & 0\\
+        0 & e^{-2\pi i/3} \\
+    \end{bmatrix}
+\]
+and claiming that with these assignments, the images of the rest of the elements of $D_3$ are fully determined.
+To understand this claim, we should do an example or two.
+We'll be as loose as you're comfortable with, and try to argue convincingly, albeit informally,
+that $\rho$ translates the multiplication of $D_3$ into the multiplication in $\GL_2(\C)$.
+
+First consider the properties $s^2=e$ and $r^3 = e$ separately in $D_3$.
+The image of $s$ under $\rho$ shares a corresponding property:
+\[
+    \begin{bmatrix}
+        0 & 1 \\
+        1 & 0 \\    
+    \end{bmatrix} \begin{bmatrix}
+        0 & 1 \\
+        1 & 0 \\    
+    \end{bmatrix} = \begin{bmatrix}
+        1 & 0 \\
+        0 & 1 \\    
+    \end{bmatrix}
+\]
+as does the image of $r$ under $\rho$:
+\[
+    \begin{bmatrix}
+        e^{2\pi i/3} & 0\\
+        0 & e^{-2\pi i/3} \\
+    \end{bmatrix} \begin{bmatrix}
+        e^{2\pi i/3} & 0\\
+        0 & e^{-2\pi i/3} \\
+    \end{bmatrix} \begin{bmatrix}
+        e^{2\pi i/3} & 0\\
+        0 & e^{-2\pi i/3} \\
+    \end{bmatrix} = \begin{bmatrix}
+        1 & 0 \\
+        0 & 1 \\    
+    \end{bmatrix}
+\]

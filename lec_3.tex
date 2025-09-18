@@ -1,6 +1,4 @@
 \section{9/17/2025}
-\red{UNSTABLE}
-
 I'd like to define a representaiton today, since we have all the prerequisite knowledge.
 The crux of the problem is this: group multiplication is hard.
 It's generally undecidable whether a given group element is even the identity.
@@ -63,64 +61,37 @@ Here's an example that translates modular arithmetic into matrix multiplication.
 \end{example}
 
 
-\subsection{Geometric example}
-These examples are both one-dimensional, so they don't really show the true flavor of representation theory. 
-Here's an example that is more complicated, which we'll linger on for a while.
-It's similar to the matrix group example, up to a change of basis.
 
-Let $D_3$ be the group with the following six elements:
-\[
-    \{ e, r, r^2, s, sr, sr^2 \}
-\]
-where we can freely multiply any elements using the reduction rules
-\[
-    r^3 = e, \quad s^2 = e, \quad rs = sr^2.
-\]
-We could alternatively phrase this by saying $D_3 = \langle r,s \mid r^3 = e, s^2 = e, rs = sr^2 \rangle$.
-We'll define a representation $\rho: D_3 \to \GL_2(\C)$ by declaring
-\[
-    \rho(s) \coloneq \begin{bmatrix}
-        0 & 1 \\
-        1 & 0 \\    
-    \end{bmatrix}
-    \quad \text{and} \quad
-    \rho(r) \coloneq \begin{bmatrix}
-        e^{2\pi i/3} & 0\\
-        0 & e^{-2\pi i/3} \\
-    \end{bmatrix}
-\]
-and claiming that with these assignments, the images of the rest of the elements of $D_3$ are fully determined.
-To understand this claim, we should do an example or two.
-We'll be as loose as you're comfortable with, and try to argue convincingly, albeit informally,
-that $\rho$ translates the multiplication of $D_3$ into the multiplication in $\GL_2(\C)$.
+\subsection{Inner automorphisms}
+I planned to end this lecture talking about the geometric representation of $D_3$.
+Instead, due to a question from Marek, we ended up talking about {\it inner automorphisms}.
+The goal here is to morally prove that groups are made to act on things.
+We'll do that by constructing, for {\it any} group $G$, a homomorphism $G\to S_G$ into 
+the set of permutations of the group's elements.
+This homomorphism won't be surjective; not every permutation of the set $G$ can be viewed
+as a group element itself.
+We'll actually be mapping into a subgroup of $S_G$ known as the automorphisms.
+More specifically, inner automorphisms.
 
-First consider the properties $s^2=e$ and $r^3 = e$ separately in $D_3$.
-The image of $s$ under $\rho$ shares a corresponding property:
-\[
-    \begin{bmatrix}
-        0 & 1 \\
-        1 & 0 \\    
-    \end{bmatrix} \begin{bmatrix}
-        0 & 1 \\
-        1 & 0 \\    
-    \end{bmatrix} = \begin{bmatrix}
-        1 & 0 \\
-        0 & 1 \\    
-    \end{bmatrix}
-\]
-as does the image of $r$ under $\rho$:
-\[
-    \begin{bmatrix}
-        e^{2\pi i/3} & 0\\
-        0 & e^{-2\pi i/3} \\
-    \end{bmatrix} \begin{bmatrix}
-        e^{2\pi i/3} & 0\\
-        0 & e^{-2\pi i/3} \\
-    \end{bmatrix} \begin{bmatrix}
-        e^{2\pi i/3} & 0\\
-        0 & e^{-2\pi i/3} \\
-    \end{bmatrix} = \begin{bmatrix}
-        1 & 0 \\
-        0 & 1 \\    
-    \end{bmatrix}
-\]
+\begin{definition}[Automorphism group]
+    Let $G$ be any group, and define the set $\Aut(G)$ by
+    \[
+        \Aut(G) \coloneq \{ \phi: G\to G \mid \text{$\phi$ is an isomorphism}\}.
+    \]
+    A self-isomorphism $G\to G$ is called an {\bf automorphism}.
+\end{definition}
+
+\begin{proposition}
+    Fix a group $G$. The set $\Aut(G)$ of automorphisms of $G$ forms a group,
+    with the operation being function composition and the identity element being
+    the identity homomorphism $\id_G$.
+\end{proposition}
+
+\begin{proof}
+    We have three things to check: 
+    closure under the group operation, 
+    existsence of an identity element,
+    and invertibility.
+
+    (Closure) 
+\end{proof}
