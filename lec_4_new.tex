@@ -1,0 +1,54 @@
+\section*{date TBD}
+
+\red{UNSTABLE}
+
+I want to take a step back and examine some parts of the definition of a representation.
+We defined a (complex, linear) representation as a homomorphism $G\to \GL_n(\C)$.
+I did this to be a bit more concrete and avoid discussing vector spaces in their own right.
+But I now realize that was a tactical mistake, and we should discuss vector spaces.
+
+\begin{definition}
+    A (complex) {\bf vector space} is a tuple $(V, s)$ where $V$ is a set, 
+    and $s:\C\to V$ is a function,
+    satisfying the following properties:
+    \begin{equation*}\tag{Addition}
+        \forall u,v\in V, \quad u+v\in V
+    \end{equation*}
+
+    \begin{equation*}\tag{Zero}
+        \exists 0\in V; \forall v\in V \quad 0+v = v+0 = v
+    \end{equation*}
+
+    \begin{equation*}\tag{Negative}
+        \forall u\in V, \exists v\in V; \quad u+v = v+u = 0
+    \end{equation*}
+
+    \begin{equation*}\tag{Left distribute}
+        \forall u,v\in V, \quad u+v\in V
+    \end{equation*}
+
+    \begin{equation*}\tag{Right distribute}
+        \forall u,v\in V, \quad u+v\in V
+    \end{equation*}
+    where we have shortened $s(\lambda,v)$ to $\lambda v$.
+\end{definition}
+
+Some expected properties follow immediately from this definition.
+
+\begin{exercise}
+    Prove the following.
+    \begin{itemize}
+        \item $v + (-1)v = 0$
+    \end{itemize}
+\end{exercise}
+
+There are many familiar examples.
+
+\begin{example}[Column vectors]
+    
+\end{example}
+
+
+\begin{example}[Polynomials]
+    
+\end{example}
