@@ -9,26 +9,26 @@ But I now realize that was a tactical mistake, and we should discuss vector spac
 
 \begin{definition}
     A (complex) {\bf vector space} is a tuple $(V, s)$ where $V$ is a set, 
-    and $s:\C\to V$ is a function,
+    and $s:\C \times V \to V$ is a function,
     satisfying the following properties:
     \begin{equation*}\tag{Addition}
         \forall u,v\in V, \quad u+v\in V
     \end{equation*}
 
     \begin{equation*}\tag{Zero}
-        \exists 0\in V; \forall v\in V \quad 0+v = v+0 = v
+        \exists \vec{0}\in V; \forall v\in V \quad \vec{0}+v = v+\vec{0} = v
     \end{equation*}
 
     \begin{equation*}\tag{Negative}
-        \forall u\in V, \exists v\in V; \quad u+v = v+u = 0
+        \forall u\in V, \exists v\in V; \quad u+v = v+u = \vec{0}
     \end{equation*}
 
     \begin{equation*}\tag{Left distribute}
-        \forall u,v\in V, \quad u+v\in V
+        \red{ \forall u,v\in V, \quad u+v\in V }
     \end{equation*}
 
     \begin{equation*}\tag{Right distribute}
-        \forall u,v\in V, \quad u+v\in V
+        \red{ \forall u,v\in V, \quad u+v\in V }
     \end{equation*}
     where we have shortened $s(\lambda,v)$ to $\lambda v$.
 \end{definition}
@@ -38,17 +38,73 @@ Some expected properties follow immediately from this definition.
 \begin{exercise}
     Prove the following.
     \begin{itemize}
-        \item $v + (-1)v = 0$
+        \item $v + (-1)v = \vec{0}$
+        \item $0 v=\vec{0}$
     \end{itemize}
 \end{exercise}
 
 There are many familiar examples.
 
-\begin{example}[Column vectors]
+\begin{example}[Zero]
+    $\{ \vec{0} \}$
+\end{example}
+
+
+\begin{example}[$\C$]
     
+\end{example}
+
+
+\begin{example}[Tuples]
+    $\C^n$
+\end{example}
+
+
+\begin{example}[Matrices]
+    $M_{m\times n}(\C)$
 \end{example}
 
 
 \begin{example}[Polynomials]
-    
+    $\C[x]$
 \end{example}
+
+
+\begin{example}[Functions]
+    $\C^{X}$
+\end{example}
+
+
+
+
+Sometimes a vector space sits inside another vector space.
+
+\begin{definition}[Subspace]
+    Let $V$ be a vector space, and let $U$ be a subset of $V$.
+    Call $U$ a {\bf vector subspace} of $V$ if
+    \begin{equation*}\tag{Addition}
+        \forall u,v\in V, \quad u+v\in V
+    \end{equation*}
+
+    \begin{equation*}\tag{Scalar multiplication}
+        \forall u\in U, \lambda\in\C, \quad \lambda u\in U
+    \end{equation*}
+\end{definition}
+
+\begin{exercise}
+    \begin{itemize}
+        \item $\vec{0} \in U$
+        \item $-u\in U$ 
+    \end{itemize}
+\end{exercise}
+
+What kinds of functions do we care about for vector spaces?
+Well, we have two sorts of structure now, so we want a function to respect both.
+
+\begin{definition}[Linear transformation]
+    Let $V$ and $W$ be vector spaces.
+    A function $T:V\to W$ is called a {\bf linear transformation} if
+    \[
+        T(u+v) = T(u) + T(w), \quad \text{and} \quad T(\lambda v) = \lambda T(v).
+    \]
+\end{definition}
