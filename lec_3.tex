@@ -73,12 +73,15 @@ as a group element itself.
 We'll actually be mapping into a subgroup of $S_G$ known as the automorphisms.
 More specifically, inner automorphisms.
 
+Henceforth, $G$ will be an arbitrary, but fixed, group.
+
 \begin{definition}[Automorphism group]
     Let $G$ be any group, and define the set $\Aut(G)$ by
     \[
         \Aut(G) \coloneq \{ \phi: G\to G \mid \text{$\phi$ is an isomorphism}\}.
     \]
     A self-isomorphism $G\to G$ is called an {\bf automorphism}.
+    Note that, in particular, an automorphism is a permutation.
 \end{definition}
 
 \begin{proposition}
@@ -92,6 +95,42 @@ More specifically, inner automorphisms.
     closure under the group operation, 
     existsence of an identity element,
     and invertibility.
+    I'll outline the logic here.
 
-    (Closure) 
+    (Closure) This reduces to checking that the composition of homomorphisms is a homomorphism,
+    and that the composition of bijective functions is bijective.
+
+    (Identity) Check that the identity map $\id_G$ given by $\id_G(x)=x$ is a bijective homomorphism.
+
+    (Inversion) Check that, for any automorphism $f$ of $G$, the inverse function $f^{-1}$ 
+    (which only exists because $f$ is assumed bijective!!) is a bijective homomorphism.
 \end{proof}
+
+Now, for any $x\in G$, let $\sigma_x: G\to G$ be the function defined by
+\[
+    \sigma_x(g) \coloneq xgx^{-1}.
+\]
+A function of this form is called an {\bf inner automorphism}.
+Its name assumes the following fact.
+
+\begin{proposition}
+    For any fixed $x\in G$, the function $\sigma_x:G\to G$ is an automorphism.
+\end{proposition}
+\begin{proof}
+    This entails proving that $\sigma_x(gh) = \sigma_x(g)\sigma_x(h)$, and that $\sigma_x$ is a bijective function.
+    To prove it's bijective, it suffices to find an inverse function.
+    Naturally enough, one can show that the function $\sigma_{x^{-1}}$ is the inverse function to $\sigma_x$.
+    The homomorphism condition is a neat exercise.
+\end{proof}
+
+Now the result mentioned earlier.
+
+\begin{theorem}
+    Define the function $\Sigma:G \to \Aut(G)$ by $\Sigma(x) \coloneq \sigma_x$.
+    Then $\Sigma$ is an injective homomorphism.
+    In particular, $\Sigma$ exactly defines an isomprphism
+    \[
+        G \xlongrightarrow{\cong} \Sigma(G).
+    \]
+    So $G$ is isomorphic to a subgroup of $S_G$.
+\end{theorem}
