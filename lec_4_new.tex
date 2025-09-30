@@ -1,4 +1,4 @@
-\section*{date TBD}
+\section*{10/1/2025}
 
 \red{UNSTABLE}
 
@@ -24,11 +24,11 @@ But I now realize that was a tactical mistake, and we should discuss vector spac
     \end{equation*}
 
     \begin{equation*}\tag{Left distribute}
-        \red{ \forall u,v\in V, \quad u+v\in V }
+        \forall \alpha,\beta\in \C, v\in V \quad (\alpha+\beta)v = \alpha v + \beta v 
     \end{equation*}
 
     \begin{equation*}\tag{Right distribute}
-        \red{ \forall u,v\in V, \quad u+v\in V }
+        \forall \alpha\in \C, v,w\in V \quad \alpha(v+w) = \alpha v + \alpha w
     \end{equation*}
     where we have shortened $s(\lambda,v)$ to $\lambda v$.
 \end{definition}
@@ -38,9 +38,11 @@ Some expected properties follow immediately from this definition.
 \begin{exercise}
     Prove the following.
     \begin{itemize}
-        \item $v + (-1)v = \vec{0}$
         \item $0 v=\vec{0}$
+        \item $v + (-1)v = \vec{0}$
     \end{itemize}
+    Note: It is not anywhere in the definition that multiplying $v$ by $-1$ gives the additive inverse of $v$.
+    That's what the second part of this exercise is showing.
 \end{exercise}
 
 There are many familiar examples.
@@ -66,12 +68,16 @@ There are many familiar examples.
 
 
 \begin{example}[Polynomials]
-    $\C[x]$
+    Define the vector space $\C[x] \coloneq \{ a_n x^n +\cdots+ a_1 x + a_0 \mid a_i \in \C \}$ with addition 
+    and scalar multiplication defined pointwise on scalars.
 \end{example}
 
 
 \begin{example}[Functions]
-    $\C^{X}$
+    Define the vector space $\C^{X} \coloneq \{ f:X \to \C\}$, with addition and scalar multiplication defined pointwise:
+    \[
+        (f+g)(x) \coloneq f(x) + g(x) \quad \text{and} \quad (\alpha \cdot f)(x) \coloneq \alpha \cdot (f(x)).
+    \]
 \end{example}
 
 
@@ -92,6 +98,8 @@ Sometimes a vector space sits inside another vector space.
 \end{definition}
 
 \begin{exercise}
+    Let $V$ be a vector space, and let $U$ be a subspace of $V$, and suppose $u\in U$.
+    Prove that:
     \begin{itemize}
         \item $\vec{0} \in U$
         \item $-u\in U$ 
@@ -103,8 +111,105 @@ Well, we have two sorts of structure now, so we want a function to respect both.
 
 \begin{definition}[Linear transformation]
     Let $V$ and $W$ be vector spaces.
-    A function $T:V\to W$ is called a {\bf linear transformation} if
+    A function $T:V\to W$ is called a {\bf linear transformation} (or {\bf linear map}) if
     \[
         T(u+v) = T(u) + T(w), \quad \text{and} \quad T(\lambda v) = \lambda T(v).
+    \]
+    If $T:V\to W$ is a linear map, its {\bf kernel} is the set
+    \[
+        \ker(T) \coloneq \{v\in V \mid T(v)=\vec{0}\}.
+    \]
+    Its {\bf image} is the set
+    \[
+        T(V) \coloneq \{ T(v) \mid v\in V\}.
+    \]
+    Often we will denote the target $T(v)$ of a vector $v\in V$ simply by $Tv$.
+\end{definition}
+
+Next, a couple of results that should remind you of group theory.
+
+\begin{proposition}
+    Let $V$ and $W$ be vector spaces, and suppose $T:V\to W$ is a linear map.
+    Then
+    \begin{itemize}
+        \item $\ker(T)$ is a subspace of $V$
+        \item $T(V)$ is a subspace of $W$
+        \item $T(\vec{0}) = \vec{0}$
+    \end{itemize}
+\end{proposition}
+
+Here are a few quick examples of linear maps between some of the example spaces above.
+
+\begin{example}[Trivial]
+    For a vector space $V$, there is always exactly one linear map $\{\vec{0}\} \to V$ and 
+    exactly one linear map $V \to \{\vec{0}\}$.
+\end{example}
+
+\begin{example}[Embedding]
+    Define the map $\C \to \C^n$ by defining
+    \[
+        \alpha \mapsto \begin{bmatrix}
+            \alpha \\
+            0 \\ \vdots \\ 0
+        \end{bmatrix}
+    \]
+\end{example}
+
+\begin{example}[Matrix]
+    Let $M$ be an $m\times n$ complex matrix.
+    View tuples in $\C^k$ as column vectors.
+    Define the linear transformation $T_M:\C^n \to \C^m$ by
+    \[
+        T_M(v) \coloneq Mv.
+    \]
+\end{example}
+
+In elementary linear algebra courses, linear maps are almost always just given by matrices.
+This is possible when we are dealing with {\bf finite-dimensional} vector spaces.
+We will mostly have cause only to deal with such vector spaces, but there are many interesting 
+examples of infinite-dimensional vector spaces (polynomials, for example).
+For more on the correspondence between linear maps and matrices, see 
+\href{https://math.libretexts.org/Bookshelves/Linear_Algebra/Book%3A_Linear_Algebra_(Schilling_Nachtergaele_and_Lankham)/06%3A_Linear_Maps/6.06%3A_The_matrix_of_a_linear_map}{this link}.
+
+The reason we're going through all of this is to put ourselves on more sure footing when defining representations,
+and the maps between them. 
+Let's start by defining some notations that will carry through to our study of categories more generally.
+
+\begin{definition}
+    Let $V$ and $W$ be two vector spaces.
+    The set of linear maps between $V$ and $W$ is 
+    \[
+         \Hom_{\Vecc}(V\to W) \coloneq \{ T:V\to W \mid \text{$T$ linear} \}.
+    \]
+    We also define {\bf endomorphisms} of vector spaces to be (not necesarrily invertible!)
+    self-maps:
+    \[
+        \End_{\Vecc}(V) \coloneq \Hom_{\Vecc}(V\to V).
+    \]
+    And finaly, the invertible self-maps, {\bf automorphisms}:
+    \[
+        \GL(V) \coloneq \{ T\in\End_{\Vecc}(V) \mid \text{$T$ invertible} \}.
+    \]
+\end{definition}
+
+Note that, since invertible linear maps are bijective, they are permutations.
+Thus $\GL(V)$ is a very special subset of $S_V$, the symmetric group on $V$.
+In fact, it's a sub{\bf group}.
+
+\begin{proposition}
+    Let $V$ be any vector space.
+    The collection $\GL(V)$ is a group.
+\end{proposition}
+
+The proof is very similar to proving that $\Aut(G)$ is a group for any group $G$.
+
+Now we're in a position to ask whether, given a group $G$ and a vector space $V$, there might
+be a homomorphism $G\to \GL(V)$. This is exactly what a representation is.
+
+\begin{definition}[Representation]
+    Let $G$ be a group and $V$ a vector space.
+    A {\bf representation} of $G$ on $V$ is a homomorphism 
+    \[
+        \rho:G\to\GL(V).
     \]
 \end{definition}
