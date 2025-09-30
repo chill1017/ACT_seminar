@@ -5,14 +5,18 @@
 I want to take a step back and examine some parts of the definition of a representation.
 We defined a (complex, linear) representation as a homomorphism $G\to \GL_n(\C)$.
 I did this to be a bit more concrete and avoid discussing vector spaces in their own right.
-But I now realize that was a tactical mistake, and we should discuss vector spaces.
+But I now realize that was a tactical mistake, and we should discuss vector spaces as such.
+The reason is that in order to build a category theory that doesn't seem conjured,
+we should have a few more examples of objects, subobjects, and maps.
+Discussing vector spaces in their own right does this twofold: once for vector spaces, 
+and then we'll build on that for representations.
 
 \begin{definition}
     A (complex) {\bf vector space} is a tuple $(V, s)$ where $V$ is a set, 
     and $s:\C \times V \to V$ is a function,
     satisfying the following properties:
-    \begin{equation*}\tag{Addition}
-        \forall u,v\in V, \quad u+v\in V
+    \begin{equation*}\tag{Commutative addition}
+        \forall u,v\in V, \quad u+v = v+u\in V
     \end{equation*}
 
     \begin{equation*}\tag{Zero}
@@ -58,7 +62,12 @@ There are many familiar examples.
 
 
 \begin{example}[Tuples]
-    $\C^n$
+    Define $\C^n \coloneq \{ (z_1,z_2,\dots,z_n) \mid z_i \in \C \}$, with addition and scalar multiplication 
+    given pointwise:
+    \[
+        (w_1,\dots,w_n)+(z_1,\dots,z_n) \coloneq (w_1+z+1,\dots,w_n+z_n) \bigand 
+        \alpha(z_1,\dots,z_n) \coloneq (\alpha z_1,\dots \alpha z_n).
+    \]
 \end{example}
 
 
@@ -186,7 +195,7 @@ Let's start by defining some notations that will carry through to our study of c
     \[
         \End_{\Vecc}(V) \coloneq \Hom_{\Vecc}(V\to V).
     \]
-    And finaly, the invertible self-maps, {\bf automorphisms}:
+    And finally, the invertible self-maps, {\bf automorphisms}:
     \[
         \GL(V) \coloneq \{ T\in\End_{\Vecc}(V) \mid \text{$T$ invertible} \}.
     \]
@@ -211,5 +220,24 @@ be a homomorphism $G\to \GL(V)$. This is exactly what a representation is.
     A {\bf representation} of $G$ on $V$ is a homomorphism 
     \[
         \rho:G\to\GL(V).
+    \]
+\end{definition}
+
+
+
+
+\red{VERY UNSTABLE}
+
+\begin{definition}[Subrepresentation]
+    
+\end{definition}
+
+
+\begin{definition}[Homomorphism/intertwiner]
+    \[
+    \xymatrix@C=55pt{
+        V \ar[r]^{T} \ar[d]^{\rho_g} & W \ar[d]^{\pi_g} \\
+        V \ar[r]^{T} & W \\
+    }
     \]
 \end{definition}
