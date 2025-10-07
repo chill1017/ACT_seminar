@@ -1,0 +1,54 @@
+\section*{10/8/2025}
+
+
+\red{UNSTABLE}
+
+We'll begin by finishing most of what we need from representation theory.
+Then we'll define categories in general, and discuss how our big three examples fit in the framework.
+
+
+
+For now we fix a group $G$.
+We will see how representations of this fixed group interact.
+
+\begin{definition}[Subrepresentation]
+    Let $\rho:G\to\GL(V)$ be a representation of $G$.
+    A subspace $U$ of $V$ is called {\bf $G$-invariant} if 
+    \[
+        \forall u\in U, g\in G, \quad \rho_g(u)\in U.
+    \]
+    Equivalently, we have, for every $g\in G$, $\rho_g|_U \in \GL(U)$.
+\end{definition}
+This is similar to how we informally said that a subgroup is a subset that's also a group (with the same operation),
+and a subspace is a subset that's also a vector space (with the same operations).
+
+To understand the definition of the maps in the category of $G$ representations, it first will be helpful to recall some shorthand.
+We defined the following three things to be the same:
+\begin{itemize}
+    \item $\rho(g)(v)$
+    \item $\rho_g(v)$
+    \item $g\cdot v$ when $\rho$ is understood.
+\end{itemize}
+
+
+\begin{definition}[Homomorphism/intertwiner]
+    Let $\rho:G\to\GL(V)$ and $\pi:G\to\GL(W)$ be two representations of the same gorup.
+    A linear map $T:V\to W$ is called a {\bf homomorphism} or {\bf intertwiner}
+    of representations if, for ever $g\in G$, we have $T(\rho_g(v)) = \pi_g(T(v))$.
+    We express this by saying the following diagram {\it commutes}:
+    \[
+    \xymatrix@C=55pt{
+        V \ar[r]^{T} \ar[d]^{\rho_g} & W \ar[d]^{\pi_g} \\
+        V \ar[r]^{T} & W \\
+    }
+    \]
+\end{definition}
+
+Equivalently, we may express this equality by stating 
+\begin{equation*}
+    \forall g\in G, v\in V, \quad T(g\cdot v) = g\cdot T(v).
+\end{equation*}
+    We may express this in a more element-free way by merely writing
+\begin{equation}\label{eq:rep-hom-condition}
+    \forall g\in G, \quad T\circ \rho_g = \pi_g \circ T.
+\end{equation}

@@ -1,6 +1,5 @@
 \section*{10/1/2025}
 
-\red{UNSTABLE}
 
 I want to take a step back and examine some parts of the definition of a representation.
 We defined a (complex, linear) representation as a homomorphism $G\to \GL_n(\C)$.
@@ -12,11 +11,15 @@ Discussing vector spaces in their own right does this twofold: once for vector s
 and then we'll build on that for representations.
 
 \begin{definition}
-    A (complex) {\bf vector space} is a tuple $(V, s)$ where $V$ is a set, 
+    A (complex) {\bf vector space} is a tuple $(V, +, s)$ where $V$ is a set, 
     and $s:\C \times V \to V$ is a function,
     satisfying the following properties:
-    \begin{equation*}\tag{Commutative addition}
+    \begin{equation*}\tag{Commutative}
         \forall u,v\in V, \quad u+v = v+u\in V
+    \end{equation*}
+
+    \begin{equation*}\tag{Associative}
+        \forall u,v,w\in V, \quad (u+v)+w = u+(v+w)\in V
     \end{equation*}
 
     \begin{equation*}\tag{Zero}
@@ -25,6 +28,10 @@ and then we'll build on that for representations.
 
     \begin{equation*}\tag{Negative}
         \forall u\in V, \exists v\in V; \quad u+v = v+u = \vec{0}
+    \end{equation*}
+
+    \begin{equation*}\tag{Scalar assoc.}
+        \forall \alpha,\beta\in \C, v\in V \quad \alpha\beta(v) = \alpha(\beta v)
     \end{equation*}
 
     \begin{equation*}\tag{Left distribute}
@@ -37,6 +44,7 @@ and then we'll build on that for representations.
     where we have shortened $s(\lambda,v)$ to $\lambda v$.
 \end{definition}
 
+In particular, $(V,+)$ is an abelian group (forgetting the scaling structure).
 Some expected properties follow immediately from this definition.
 
 \begin{exercise}
@@ -224,20 +232,3 @@ be a homomorphism $G\to \GL(V)$. This is exactly what a representation is.
 \end{definition}
 
 
-
-
-\red{VERY UNSTABLE}
-
-\begin{definition}[Subrepresentation]
-    
-\end{definition}
-
-
-\begin{definition}[Homomorphism/intertwiner]
-    \[
-    \xymatrix@C=55pt{
-        V \ar[r]^{T} \ar[d]^{\rho_g} & W \ar[d]^{\pi_g} \\
-        V \ar[r]^{T} & W \\
-    }
-    \]
-\end{definition}
