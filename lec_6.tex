@@ -1,0 +1,159 @@
+\section*{10/15/2025}
+
+\red{UNSTABLE}
+
+We'll begin by finishing most of what we need from representation theory.
+Then I'll try and actually sketch the so-called ``graphical correspondence.''
+
+To understand the definition of the maps in the category of $G$ representations, it first will be helpful to recall some shorthand.
+We defined the following three things to be the same:
+\begin{itemize}
+    \item $\rho(g)(v)$
+    \item $\rho_g(v)$
+    \item $g\cdot v$ or $gv$ when $\rho$ is understood.
+\end{itemize}
+
+
+\begin{definition}[Homomorphism/intertwiner]
+    Let $\rho:G\to\GL(V)$ and $\pi:G\to\GL(W)$ be two representations of the same gorup.
+    A linear map $T:V\to W$ is called a {\bf homomorphism} 
+    of representations if, for every $g\in G$, we have $T(\rho_g(v)) = \pi_g(T(v))$.
+    We express this by saying the following diagram {\it ``commutes''}:
+    \[
+    \xymatrix@C=55pt{
+        V \ar[r]^{T} \ar[d]^{\rho_g} & W \ar[d]^{\pi_g} \\
+        V \ar[r]^{T} & W \\
+    }
+    \]
+\end{definition}
+
+Equivalently, we may express this equality by stating 
+\begin{equation*}
+    \forall g\in G, v\in V, \quad T(g\cdot v) = g\cdot T(v).
+\end{equation*}
+    We may express this in a more element-free way by merely writing
+\begin{equation}\label{eq:rep-hom-condition}
+    \forall g\in G, \quad T\circ \rho_g = \pi_g \circ T.
+\end{equation}
+
+As promised, the representations of a group form a category.
+It's actually a (rigid, pivotal, etc...) tensor category, but we'll get to some of those adjectives later.
+\begin{example}
+    Let $G$ be a group, and let $\Rep(G)$ denote the class of finite-dimensional representations of $G$.
+    \begin{itemize}
+        \item $ob(\Rep(G)) = \{ (V,\rho) \mid \text{$\rho:G\to\GL(V)$ is a representation}\}$
+        \item $\Hom_{\Rep(G)}(V\to W) = \{ T:V\to W \mid \text{$T$ is an intertwiner} \}$
+    \end{itemize}
+\end{example}
+
+
+For now we fix a finite group $G$.
+We will see how representations of this fixed group interact.
+
+\begin{definition}[Irreducibility]
+    Let $\rho:G\to\GL(V)$ be a representation of $G$.
+    A subspace $U$ of $V$ is called a {\bf subrepresentation} if 
+    \[
+        \forall u\in U, g\in G, \quad \rho_g(u)\in U.
+    \]
+    Equivalently, we have, for every $g\in G$, $\rho_g|_U \in \GL(U)$.
+
+    A representation with no \red{nontrivial} subrepresentations is called {\bf irreducible}. 
+\end{definition}
+
+Irreducible representations of a group are the atomic objects in a representation category.
+Every (finite-dimensional) representation of $G$ is a {\it direct sum} of irreducible representations.
+
+Here's a lemma that we'll use to count multiplicities of subrepresentaitons.
+\begin{lemma}[Schur's lemma]
+    Let $\rho:G\to\GL(V)$ and $\pi:G\to\GL(W)$ be irreducible representations.
+    Suppose $T:V\to W$ is a homomorphism of representations.
+    Then either $T=0$ or $T$ is an isomorphism.
+\end{lemma}
+
+\begin{proof}
+    It suffices to prove that $\ker(T)$ is a subrepresentation of $V$, 
+    and $T(V)$ is a subrepresentation of $W$.
+    If $T$ is nonzero, the former must be $\{\vec{0}\}$.
+    Now, it can't be that the image $T(V)$ is anything but all of $W$.
+    Hence $T$ has trivial kernel, and is surjective; an isomorphism.
+\end{proof}
+
+Now here's the form we'll use this lemma in.
+\begin{corollary}
+    Let $\rho:G\to V$ be an irreducible representation, and let $\pi:G\to X$ be any representation.
+    If there is a nonzero homomorphism of representations
+    \[
+        T:V\to X
+    \]
+    then $X$ has a subrepresentation isomorphic to $V$.
+\end{corollary}
+
+In this case, we say ``$X$ contains a copy of $V$,''
+and will sometimes write $V\leq X$.
+
+The effect of this lemma is to allow us to find ``decompositions'' of representations by findind maps from irreducibles.
+Let's set the stage.
+
+Recall how we defined the dihedral group: 
+\[
+    D_3 = \langle r,s \mid r^3=s^2=e, sr=r^2s \rangle.
+\]
+Now we'll define three representations by saying what they do to the generators $r$ and $s$.
+
+\begin{itemize}
+    \item Define $\pi_t:G\to\GL(\C_t)$ by
+    \[
+    \pi_t(r) \coloneq 1 \bigand 
+    \pi_t(s) \coloneq 1.
+    \]
+
+    \item Define $\pi_s:G\to\GL(\C_s)$ by
+    \[
+    \pi_s(r) \coloneq 1 \bigand 
+    \pi_s(s) \coloneq -1.
+    \]
+    
+    \item Define $\rho:G\to\GL(\C^2)$ by
+    \[
+    \rho(r) \coloneq \begin{bmatrix}
+        e^{2\pi i/3} & 0\\
+        0 & e^{-2\pi i/3} \\
+    \end{bmatrix} \bigand 
+    \rho(s) \coloneq \begin{bmatrix}
+        0 & 1 \\
+        1 & 0 \\
+    \end{bmatrix}.
+    \]
+
+    \item Define $\rho\otimes\rho:G\to\GL(\C^2\otimes\C^2)$ by
+    \[
+    \rho\otimes\rho(r) \coloneq \begin{bmatrix}
+        e^{2\pi i/3} \rho(r) & 0\\
+        0 & e^{-2\pi i/3} \rho(r) \\
+    \end{bmatrix} = \begin{bmatrix}
+    e^{4\pi i/3} & 0 & 0 & 0 \\
+    0 & 1 & 0 & 0 \\
+    0 & 0 & 1 & 0 \\
+    0 & 0 & 0 & e^{2\pi i/3} \\
+    \end{bmatrix}
+    \]
+    and 
+    \[
+    \rho\otimes\rho(s) \coloneq \begin{bmatrix}
+        0 & 1 \rho(s) \\
+        1\rho(s) & 0 \\
+    \end{bmatrix} = \begin{bmatrix}
+    0 & 0 & 0 & 1 \\
+    0 & 0 & 1 & 0 \\
+    0 & 1 & 0 & 0 \\
+    1 & 0 & 0 & 0 \\
+    \end{bmatrix}.
+    \]
+\end{itemize}
+
+Our goal here is to find morphisms 
+\[
+    \C_t \to\C^2\otimes\C^2,\quad \C_s\to \C^2\otimes\C^2,\bigand \C^2\to \C^2\otimes\C^2,
+\]
+thereby showing that $\C^2\otimes\C^2 = \C_t \oplus \C_s \oplus \C^2$.
